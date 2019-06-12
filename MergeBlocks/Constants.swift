@@ -32,7 +32,9 @@ struct Constants {
         enum ShapeType: String {
             case none = "none"
             case horizontal2 = "horizontal2"
+            case horizontalAll = "horizontalAll"
             case vertical = "vertical"
+            case verticalAll = "verticalAll"
             case vertical3 = "vertical3"
             case threehorizon = "threehorizon"
             case Thorizontal = "thorizontal"

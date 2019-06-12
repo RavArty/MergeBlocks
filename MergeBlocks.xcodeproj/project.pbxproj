@@ -18,6 +18,7 @@
 		459ACD4322A6323800A8167C /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459ACD4222A6323800A8167C /* Array2D.swift */; };
 		459ACD4522A6327500A8167C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459ACD4422A6327500A8167C /* Constants.swift */; };
 		45BF135822B086B200FD4EBC /* Matches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BF135722B086B200FD4EBC /* Matches.swift */; };
+		45BF135A22B0873A00FD4EBC /* Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BF135922B0873A00FD4EBC /* Chain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		459ACD4222A6323800A8167C /* Array2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
 		459ACD4422A6327500A8167C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		45BF135722B086B200FD4EBC /* Matches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matches.swift; sourceTree = "<group>"; };
+		45BF135922B0873A00FD4EBC /* Chain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				459ACD4022A6322500A8167C /* Box.swift */,
 				459ACD4222A6323800A8167C /* Array2D.swift */,
 				45BF135722B086B200FD4EBC /* Matches.swift */,
+				45BF135922B0873A00FD4EBC /* Chain.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				459ACD2A22A61CD000A8167C /* GameScene.swift in Sources */,
 				459ACD4322A6323800A8167C /* Array2D.swift in Sources */,
 				459ACD2C22A61CD000A8167C /* GameViewController.swift in Sources */,
+				45BF135A22B0873A00FD4EBC /* Chain.swift in Sources */,
 				459ACD3F22A631E700A8167C /* Level.swift in Sources */,
 				459ACD4522A6327500A8167C /* Constants.swift in Sources */,
 				45BF135822B086B200FD4EBC /* Matches.swift in Sources */,
