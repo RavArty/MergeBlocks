@@ -26,7 +26,7 @@ struct Constants {
     }
     struct ColorAmount{
         //  static let quantity: UInt32 = 4
-        static let quantity: UInt32 = 7
+        static let quantity: UInt32 = 10
     }
     struct Shapes{
         enum ShapeType: String {

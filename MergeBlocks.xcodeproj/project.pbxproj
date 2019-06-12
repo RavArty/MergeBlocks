@@ -68,11 +68,11 @@
 				459ACD3C22A6319D00A8167C /* Model */,
 				459ACD3B22A630B800A8167C /* Controller */,
 				459ACD2322A61CD000A8167C /* AppDelegate.swift */,
+				459ACD4422A6327500A8167C /* Constants.swift */,
 				459ACD2D22A61CD000A8167C /* Main.storyboard */,
 				459ACD3022A61CD300A8167C /* Assets.xcassets */,
 				459ACD3222A61CD300A8167C /* LaunchScreen.storyboard */,
 				459ACD3522A61CD300A8167C /* Info.plist */,
-				459ACD4422A6327500A8167C /* Constants.swift */,
 			);
 			path = MergeBlocks;
 			sourceTree = "<group>";

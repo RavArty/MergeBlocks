@@ -12,18 +12,21 @@ import SpriteKit
 // MARK: - BoxType
 enum BoxType: Int {
     // MARK: change
-    //   case unknown = 0, green, blue, red, yellow, brown, cyan, magenta, purple, orange, white
-    case unknown = 0, cookie, macaron, cupcake, donut, icecream, jelly, cake
+    case unknown = 0, green, blue, red, yellow, brown, cyan, magenta, purple, orange, white
+
     
     var spriteName: String {
         let spriteNames = [
-            "cookie",
-            "macaron",
-            "cupcake",
-            "donut",
-            "ice_cream",
-            "jelly",
-            "cake"]
+            "green",
+            "blue",
+            "red",
+            "yellow",
+            "brown",
+            "cyan",
+            "magneta",
+            "purple",
+            "orange",
+            "white"]
         
         return spriteNames[rawValue - 1]
     }
@@ -41,8 +44,9 @@ class Box: Hashable {    //CustomStringConvertible,
     var column: Int
     var row: Int
     var boxType: BoxType
-    var boxSprite: SKSpriteNode? //SKShapeNode?
+    var boxSprite: SKShapeNode?
     var isInChain: Bool = false
+    var didFall: Bool = false
     //    var checked: Bool
     //var sprite: SKSpriteNode? - make it active in future
     
