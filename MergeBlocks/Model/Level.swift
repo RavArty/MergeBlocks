@@ -15,7 +15,7 @@ class Level{
     private var boxes = Array2D<Box>(columns: Constants.ArenaSize.numColumns, rows: Constants.ArenaSize.numRows)
     
     var matches = Matches()
-
+    var changeType = ChangeType()
     
 //----------------------------------------------------------------------------------
     //MARK: Check availability of box
@@ -156,6 +156,12 @@ class Level{
             
         }
     }
-
+//------------------------------------------------------------------------------------
+    // MARK: Change color
+    func changeColor(_ box: Box) -> Box{
+        box.boxType = changeType.changeType(box)
+        return box
+        
+    }
     
 }
