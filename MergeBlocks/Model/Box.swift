@@ -47,6 +47,7 @@ class Box: Hashable {    //CustomStringConvertible,
     var boxSprite: SKShapeNode?
     var isInChain: Bool = false
     var didFall: Bool = false
+    var isNeedToDestr: Bool = false
     //    var checked: Bool
     //var sprite: SKSpriteNode? - make it active in future
     

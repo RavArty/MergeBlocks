@@ -14,6 +14,9 @@ class Level{
     private var falledBox = Box(column: Constants.ArenaSize.numColumns - 1, row: Constants.ArenaSize.numRows - 1, boxType: .unknown, isInChain: false)
     private var boxes = Array2D<Box>(columns: Constants.ArenaSize.numColumns, rows: Constants.ArenaSize.numRows)
     
+    var matches = Matches()
+
+    
 //----------------------------------------------------------------------------------
     //MARK: Check availability of box
     func box(atColumn column: Int, row: Int) -> Box? {
@@ -121,6 +124,37 @@ class Level{
         }
         
         return set
+    }
+//----------------------------------------------------------------------------------
+    //MARK: Remove matches
+    func removeMatches() -> Set<Chain> {
+        
+        let shapes = matches.detectMatches(boxes)
+        boxes[falledBox.column, falledBox.row]?.didFall = false
+        removeBoxes(in: shapes)
+        
+        return shapes
+    }
+//------------------------------------------------------------------------------------
+    // MARK: Remove matched boxes
+    private func removeBoxes(in chains: Set<Chain>) {
+        
+        for chain in chains {
+            
+            for box in chain.boxes {
+                if box.isNeedToDestr{
+                    boxes[box.column, box.row] = nil
+                }else{
+                    //we need to merge object into one..first in chain will always be there
+                    //       chain.firstBox().boxType = changeType.changeType(chain.firstBox())
+                    chain.firstBox().isInChain = false
+                    if box != chain.firstBox(){
+                        boxes[box.column, box.row] = nil
+                    }
+                }
+            }
+            
+        }
     }
 
     
