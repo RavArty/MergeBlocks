@@ -20,6 +20,7 @@
 		45BF135822B086B200FD4EBC /* Matches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BF135722B086B200FD4EBC /* Matches.swift */; };
 		45BF135A22B0873A00FD4EBC /* Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BF135922B0873A00FD4EBC /* Chain.swift */; };
 		45BF135C22B1F8E600FD4EBC /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BF135B22B1F8E600FD4EBC /* Shapes.swift */; };
+		45BF135E22B1F94C00FD4EBC /* ChangeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BF135D22B1F94C00FD4EBC /* ChangeType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		45BF135722B086B200FD4EBC /* Matches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matches.swift; sourceTree = "<group>"; };
 		45BF135922B0873A00FD4EBC /* Chain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chain.swift; sourceTree = "<group>"; };
 		45BF135B22B1F8E600FD4EBC /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
+		45BF135D22B1F94C00FD4EBC /* ChangeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				45BF135722B086B200FD4EBC /* Matches.swift */,
 				45BF135922B0873A00FD4EBC /* Chain.swift */,
 				45BF135B22B1F8E600FD4EBC /* Shapes.swift */,
+				45BF135D22B1F94C00FD4EBC /* ChangeType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				459ACD4322A6323800A8167C /* Array2D.swift in Sources */,
 				459ACD2C22A61CD000A8167C /* GameViewController.swift in Sources */,
 				45BF135A22B0873A00FD4EBC /* Chain.swift in Sources */,
+				45BF135E22B1F94C00FD4EBC /* ChangeType.swift in Sources */,
 				459ACD3F22A631E700A8167C /* Level.swift in Sources */,
 				459ACD4522A6327500A8167C /* Constants.swift in Sources */,
 				45BF135822B086B200FD4EBC /* Matches.swift in Sources */,

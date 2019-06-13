@@ -67,11 +67,7 @@ class Box: Hashable {    //CustomStringConvertible,
         return lhs.column == rhs.column && lhs.row == rhs.row
         
     }
-    /* from - CustomStringConvertible
-     var description: String {
-     return "type:\(boxType) square:(\(column),\(row))"
-     }
-     */
+ 
     
 }
 
