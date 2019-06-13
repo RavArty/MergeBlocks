@@ -101,5 +101,58 @@ class GameScene: SKScene {
             boxesLayer.addChild(sprite)
         }
     }
+//----------------------------------------------------------------------------------
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        findClosestCell()
+    }
+    
+    func findClosestCell(){
+        let box = level.box(atColumn: 0, row: Constants.ArenaSize.numRows - 1)
+        let sprite = box!.boxSprite!
+        let newBoxColumn = convertPoint(sprite.position).column
+        
+        if let handler = tapHandler {
+            handler(newBoxColumn)
+        }
+    }
+//----------------------------------------------------------------------------------
+    // MARK: Animate falling box
+    func animateFallingBox(box: Box, column: Int, row: Int, completion: @escaping () -> Void){
+        let sprite = box.boxSprite
+        sprite!.removeAction(forKey: "swingBox")
+        //move box to closest cell
+        let newPosition = pointFor(column: column, row: Constants.ArenaSize.numRows - 1)
+        let duration = 0.1
+        // print("sprite.pos: \(sprite!.position.x), \(sprite!.position.y)")
+        // print("newPosition: \(newPosition.x), \(newPosition.y)"
+        let moveAction = SKAction.move(to: newPosition, duration: duration)
+        
+        var longestDuration: TimeInterval = 0
+        //animate falling box
+        let newPosition2 = pointFor(column: column, row: row)
+        let duration2 = TimeInterval(((sprite!.position.y - newPosition2.y) / Constants.CellSize.tileHeight) * 0.05)
+        longestDuration = max(longestDuration, (duration + duration2))
+        let moveAction2 = SKAction.move(to: newPosition2, duration: duration2)
+        moveAction2.timingMode = .easeOut
+        
+        sprite!.run(SKAction.sequence([moveAction, moveAction2]))
+        run(SKAction.wait(forDuration: longestDuration), completion: completion)
+    }
+//----------------------------------------------------------------------------------
+    // MARK: Animate moving boxes up
+    func animateBoxesUp(boxes: [Box], completion: @escaping () -> Void){
+        var duration: TimeInterval = 0
+        for box in boxes{
+            let newPosition = pointFor(column: box.column, row: box.row)
+            let sprite = box.boxSprite
+            duration = TimeInterval(((newPosition.y - sprite!.position.y) / Constants.CellSize.tileHeight) * 0.1)
+            let moveAction = SKAction.move(to: newPosition, duration: duration)
+            //    moveAction.timingMode = .easeOut
+            box.boxSprite!.run(SKAction.group([moveAction]), withKey: "moveUp")
+        }
+        run(SKAction.wait(forDuration: duration), completion: completion)
+    }
+
 
 }
