@@ -153,6 +153,124 @@ class GameScene: SKScene {
         }
         run(SKAction.wait(forDuration: duration), completion: completion)
     }
+//----------------------------------------------------------------------------------
+    // MARK: Animated merging boxes
+    func animateMatchedBoxes(for chains: Set<Chain>, completion: @escaping () -> Void) {
+        var firstBox: Box = Box(column: 0, row: 0, boxType: .unknown, isInChain: false)
+        for chain in chains {
+            for box in chain.boxes{
+                if box == chain.firstBox(){firstBox = box}
+            }
+            for box in chain.boxes {
+                if box.isNeedToDestr{
+                    if let sprite = box.boxSprite {
+                        if sprite.action(forKey: "removing") == nil {
+                            let scaleAction = SKAction.scale(to: 0.1, duration: 0.3)
+                            
+                            scaleAction.timingMode = .easeOut
+                            sprite.run(SKAction.sequence([scaleAction, SKAction.removeFromParent()]),
+                                       withKey: "removing")
+                        }
+                    }
+                }else{
+                    if box != chain.firstBox(){
+                        
+                        if let sprite = box.boxSprite {
+                            sprite.zPosition = -1
+                            if sprite.action(forKey: "removing") == nil {
+                                let moveTo = SKAction.move(to: pointFor(column: firstBox.column, row: firstBox.row), duration: 0.3)
+                                let scaleAction = SKAction.fadeOut(withDuration: 0.3)
+                                
+                                scaleAction.timingMode = .easeOut
+                                sprite.run(SKAction.sequence([moveTo, scaleAction, SKAction.removeFromParent()]),
+                                           withKey: "removing")
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }
+        run(SKAction.wait(forDuration: 0.6), completion: completion)
+    }
+//----------------------------------------------------------------------------------
+    // MARK: Animated special boxes
+    func animateSpecialBoxes(for chains: Set<Chain>, completion: @escaping () -> Void) {
+        //  var firstBox: Box = Box(column: 0, row: 0, boxType: .unknown, isInChain: false)
+        for chain in chains {
+            for box in chain.boxes {
+                if box.isNeedToDestr{
+                    if let sprite = box.boxSprite {
+                        if sprite.action(forKey: "removing") == nil {
+                            let scaleAction = SKAction.scale(to: 0.1, duration: 0.3)
+                            
+                            scaleAction.timingMode = .easeOut
+                            sprite.run(SKAction.sequence([scaleAction, SKAction.removeFromParent()]),
+                                       withKey: "removing")
+                        }
+                    }
+                    
+                }
+                
+            }
+        }
+        run(SKAction.wait(forDuration: 0.3), completion: completion)
+    }
+//----------------------------------------------------------------------------------
+    // MARK: Animate falling boxes after matching
+    func animateFallingBoxes(in columns: [[Box]], completion: @escaping () -> Void) {
+        
+        var longestDuration: TimeInterval = 0
+        for array in columns {
+            for (index, box) in array.enumerated() {
+                let newPosition = pointFor(column: box.column, row: box.row)
+                //  let delay = 0.0
+                let delay = 0.1 * TimeInterval(index)
+                //  let delay = 0.05 + 0.15 * TimeInterval(index)
+                let sprite = box.boxSprite!   // sprite always exists at this point
+                let duration = TimeInterval(((sprite.position.y - newPosition.y) / Constants.CellSize.tileHeight) * 0.1)
+                longestDuration = max(longestDuration, duration + delay)
+                let moveAction = SKAction.move(to: newPosition, duration: duration)
+                moveAction.timingMode = .easeOut
+                sprite.run(
+                    SKAction.sequence([
+                        SKAction.wait(forDuration: delay),
+                        SKAction.group([moveAction])]))
+            }
+        }
+        
+        run(SKAction.wait(forDuration: longestDuration), completion: completion)
+    }
+//----------------------------------------------------------------------------------
+    // MARK: Animate top swinging box
+    func animateSwingBox(box: Box){
+        let newBox = box.boxSprite!
+        let oldPosition = pointFor(column: box.column, row: box.row)
+        let newPosition = pointFor(column: Constants.ArenaSize.numColumns - 1, row: Constants.ArenaSize.numRows - 1)
+        let moveAction1 = SKAction.move(to: newPosition, duration: 2)
+        moveAction1.timingMode = .easeOut
+        let delay = 0.1
+        let moveAction2 = SKAction.move(to: oldPosition, duration: 2)
+        moveAction2.timingMode = .easeOut
+        //    newBox.run(SKAction.repeatForever(SKAction.sequence([moveAction1, moveAction2])), withKey: "swingBox")
+        
+        newBox.run(SKAction.repeatForever(SKAction.sequence([moveAction1, SKAction.wait(forDuration: delay), moveAction2, SKAction.wait(forDuration: delay)])), withKey: "swingBox")
+        
+        
+    }
+//----------------------------------------------------------------------------------
+    // MARK: Change color after merging
+    func changeColor(_ box: Box){
+        if let sprite = box.boxSprite{
+            sprite.fillColor = box.boxType.spriteName
+            
+        }
+    }
+//----------------------------------------------------------------------------------
+    // MARK: Stop swinging animation
+    func stopSwinging(){
+        
+    }
 
 
 }
