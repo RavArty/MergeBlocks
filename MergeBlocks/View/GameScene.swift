@@ -54,4 +54,52 @@ class GameScene: SKScene {
             x: CGFloat(column) * Constants.CellSize.tileWidth + Constants.CellSize.tileWidth / 2,
             y: CGFloat(row) * Constants.CellSize.tileHeight + Constants.CellSize.tileHeight / 2)
     }
+//----------------------------------------------------------------------------------
+    // MARK: converts Point -> (column, row)
+    func convertPoint(_ point: CGPoint) -> (column: Int, row: Int) {
+        if point.x >= 0 && point.x <= (CGFloat(Constants.ArenaSize.numColumns) * Constants.CellSize.tileWidth + Constants.CellSize.tileWidth / 2) &&
+            point.y >= 0 && point.y <= (CGFloat(Constants.ArenaSize.numRows) * Constants.CellSize.tileHeight + Constants.CellSize.tileWidth / 2) {
+            return (Int(point.x / Constants.CellSize.tileWidth), Int(point.y / Constants.CellSize.tileHeight))
+        } else {
+            return (0, 0)  // invalid location
+        }
+    }
+//----------------------------------------------------------------------------------
+    //MARK: Removes all boxes from board
+    func removeAllBoxSprites() {
+        boxesLayer.removeAllChildren()
+    }
+//----------------------------------------------------------------------------------
+    // MARK: add sprite to a swinging box
+    func addSprite(for box: Box) {
+        
+        let sprite = SKShapeNode()
+        sprite.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: Constants.CellSize.tileWidth, height: Constants.CellSize.tileHeight), cornerRadius: 5).cgPath
+         sprite.fillColor = box.boxType.spriteName
+         sprite.strokeColor = UIColor.black
+         sprite.lineWidth = 2
+         sprite.position = pointFor(column: box.column, row: box.row)
+        sprite.zPosition = 1
+        
+        //   print("sprite.pos1: \(sprite.position.x), \(sprite.position.y)")
+        boxesLayer.addChild(sprite)
+        box.boxSprite = sprite
+    }
+//----------------------------------------------------------------------------------
+    // MARK: add sprites to growing boxes from bottom
+    func addSprites(for boxes: Set<Box>) {
+        for box in boxes{
+            
+            let sprite = SKShapeNode()
+            sprite.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: Constants.CellSize.tileWidth, height: Constants.CellSize.tileHeight), cornerRadius: 5).cgPath
+            sprite.fillColor = box.boxType.spriteName
+            sprite.strokeColor = UIColor.black
+            sprite.lineWidth = 2
+            sprite.position = pointFor(column: box.column, row: box.row)
+            sprite.zPosition = 1
+            box.boxSprite = sprite
+            boxesLayer.addChild(sprite)
+        }
+    }
+
 }

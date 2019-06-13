@@ -15,18 +15,18 @@ enum BoxType: Int {
     case unknown = 0, green, blue, red, yellow, brown, cyan, magenta, purple, orange, white
 
     
-    var spriteName: String {
+    var spriteName: UIColor {
         let spriteNames = [
-            "green",
-            "blue",
-            "red",
-            "yellow",
-            "brown",
-            "cyan",
-            "magneta",
-            "purple",
-            "orange",
-            "white"]
+            UIColor.green,
+            UIColor.blue,
+            UIColor.red,
+            UIColor.yellow,
+            UIColor.brown,
+            UIColor.cyan,
+            UIColor.magenta,
+            UIColor.purple,
+            UIColor.orange,
+            UIColor.white]
         
         return spriteNames[rawValue - 1]
     }
