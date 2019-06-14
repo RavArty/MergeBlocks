@@ -163,5 +163,30 @@ class Level{
         return box
         
     }
-    
+//------------------------------------------------------------------------------------
+    // MARK: Fill holes after merging by putting upper boxes down
+    func fillHoles() -> [[Box]] {
+        var columns: [[Box]] = []
+        
+        for column in 0..<Constants.ArenaSize.numColumns {
+            var array = [Box]()
+            for row in 0..<(Constants.ArenaSize.numRows - 1) {
+                if boxes[column, row] == nil {
+                    for lookup in (row + 1)..<(Constants.ArenaSize.numRows - 1) {
+                        if let box = boxes[column, lookup] {
+                            boxes[column, lookup] = nil
+                            boxes[column, row] = box
+                            box.row = row
+                            array.append(box)
+                            break
+                        }
+                    }
+                }
+            }
+            if !array.isEmpty {
+                columns.append(array)
+            }
+        }
+        return columns
+    }
 }

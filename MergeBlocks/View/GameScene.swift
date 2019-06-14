@@ -79,7 +79,7 @@ class GameScene: SKScene {
          sprite.strokeColor = UIColor.black
          sprite.lineWidth = 2
          sprite.position = pointFor(column: box.column, row: box.row)
-        sprite.zPosition = 1
+         sprite.zPosition = 1
         
         //   print("sprite.pos1: \(sprite.position.x), \(sprite.position.y)")
         boxesLayer.addChild(sprite)
@@ -99,6 +99,40 @@ class GameScene: SKScene {
             sprite.zPosition = 1
             box.boxSprite = sprite
             boxesLayer.addChild(sprite)
+        }
+    }
+//----------------------------------------------------------------------------------
+    //MARK: Adding tiles
+    func addTiles() {
+        // 1
+        for row in 0...Constants.ArenaSize.numRows {
+            for column in 0...Constants.ArenaSize.numColumns {
+                //           if level.tileAt(column: column, row: row) != nil {
+                let tileNode = SKSpriteNode(imageNamed: "MaskTile")
+                tileNode.size = CGSize(width: Constants.CellSize.tileWidth, height: Constants.CellSize.tileHeight)
+                tileNode.position = pointFor(column: column, row: row)
+                maskLayer.addChild(tileNode)
+                //           }
+            }
+        }
+        
+        for row in 0..<Constants.ArenaSize.numRows - 1 {
+            for column in 0..<Constants.ArenaSize.numColumns {
+                //      if level.tileAt(column: column, row: row) != nil {
+                let tileNode = SKShapeNode()
+                tileNode.path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: Constants.CellSize.tileWidth, height: Constants.CellSize.tileHeight)).cgPath
+                //     tileNode.fillColor = .gray
+                tileNode.strokeColor = .white
+                tileNode.alpha = 0.1
+                tileNode.lineWidth = 1
+                var point = pointFor(column: column, row: row)
+                point.x -= Constants.CellSize.tileWidth / 2
+                point.y -= Constants.CellSize.tileHeight / 2
+                tileNode.position = point
+                
+                tilesLayer.addChild(tileNode)
+                //       }
+            }
         }
     }
 //----------------------------------------------------------------------------------

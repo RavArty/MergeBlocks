@@ -33,7 +33,7 @@ class GameViewController: UIViewController {
         
         level = Level()
         scene.level = level
-       // scene.addTiles()
+        scene.addTiles()
         scene.tapHandler = handleFalling
         skView.presentScene(scene)
     }
@@ -90,19 +90,19 @@ class GameViewController: UIViewController {
             self.view.isUserInteractionEnabled = true
             let chains = level.removeMatches()
             if chains.count == 0 {
-                let specialBoxesChain = level.checkSpecialBoxes()
-                scene.animateSpecialBoxes(for: specialBoxesChain){
-                    let columns = self.level.fillHoles()
-                    self.scene.animateFallingBoxes(in: columns) {
+     //           let specialBoxesChain = level.checkSpecialBoxes()
+     //           scene.animateSpecialBoxes(for: specialBoxesChain){
+     //               let columns = self.level.fillHoles()
+     //               self.scene.animateFallingBoxes(in: columns) {
                         self.shuffle()
-                    }
-                }
+     //               }
+     //           }
                 
                 
                 return
             }
             self.view.isUserInteractionEnabled = false
-            scene.animateMatchedBoxes(for: chains) {
+        scene.animateMatchedBoxes(for: chains) {
                 for chain in chains{
                     let box = chain.firstBox()
                     //     let box = self.level.changeColor(chain.firstBox())
@@ -130,7 +130,7 @@ class GameViewController: UIViewController {
             gameOver()
         }
     }
-    //----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------
     func gameOver(){
         let alertController = UIAlertController(title: "Game Over", message:
             "Restart the game", preferredStyle: .alert)
@@ -141,22 +141,21 @@ class GameViewController: UIViewController {
         
         self.present(alertController, animated: true)
     }
-    //----------------------------------------------------------------------------------
-    override var shouldAutorotate: Bool {
-        return false
+//----------------------------------------------------------------------------------
+override var shouldAutorotate: Bool {
+    return false
+}
+
+override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    if UIDevice.current.userInterfaceIdiom == .phone {
+        return .allButUpsideDown
+    } else {
+        return .all
     }
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
+}
+
+override var prefersStatusBarHidden: Bool {
+    return true
 }
 
 }
