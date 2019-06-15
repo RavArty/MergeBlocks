@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		45404FC622B58BE8009EF090 /* Grid.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 45404FC522B58BE7009EF090 /* Grid.atlas */; };
+		45404FCA22B59303009EF090 /* Grid.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 45404FC922B59303009EF090 /* Grid.atlas */; };
 		459ACD2422A61CD000A8167C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459ACD2322A61CD000A8167C /* AppDelegate.swift */; };
 		459ACD2A22A61CD000A8167C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459ACD2922A61CD000A8167C /* GameScene.swift */; };
 		459ACD2C22A61CD000A8167C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459ACD2B22A61CD000A8167C /* GameViewController.swift */; };
@@ -25,7 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		45404FC522B58BE7009EF090 /* Grid.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Grid.atlas; sourceTree = "<group>"; };
+		45404FC922B59303009EF090 /* Grid.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Grid.atlas; sourceTree = "<group>"; };
 		459ACD2022A61CD000A8167C /* MergeBlocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MergeBlocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		459ACD2322A61CD000A8167C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		459ACD2922A61CD000A8167C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 				459ACD4422A6327500A8167C /* Constants.swift */,
 				459ACD2D22A61CD000A8167C /* Main.storyboard */,
 				459ACD3022A61CD300A8167C /* Assets.xcassets */,
-				45404FC522B58BE7009EF090 /* Grid.atlas */,
+				45404FC922B59303009EF090 /* Grid.atlas */,
 				459ACD3222A61CD300A8167C /* LaunchScreen.storyboard */,
 				459ACD3522A61CD300A8167C /* Info.plist */,
 			);
@@ -179,7 +179,7 @@
 				459ACD2F22A61CD000A8167C /* Main.storyboard in Resources */,
 				459ACD3122A61CD300A8167C /* Assets.xcassets in Resources */,
 				459ACD3422A61CD300A8167C /* LaunchScreen.storyboard in Resources */,
-				45404FC622B58BE8009EF090 /* Grid.atlas in Resources */,
+				45404FCA22B59303009EF090 /* Grid.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
