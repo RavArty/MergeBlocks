@@ -80,10 +80,10 @@ class GameScene: SKScene {
          sprite.lineWidth = 2
          sprite.position = pointFor(column: box.column, row: box.row)
          sprite.zPosition = 1
-        
+         box.boxSprite = sprite
         //   print("sprite.pos1: \(sprite.position.x), \(sprite.position.y)")
         boxesLayer.addChild(sprite)
-        box.boxSprite = sprite
+        
     }
 //----------------------------------------------------------------------------------
     // MARK: add sprites to growing boxes from bottom
