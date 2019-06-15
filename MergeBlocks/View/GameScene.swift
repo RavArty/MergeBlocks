@@ -30,7 +30,7 @@ class GameScene: SKScene {
         
         let layerPosition = CGPoint(
             // MARK: on IPhoneX too close to right edge, substract tileWidth/2
-            x: -Constants.CellSize.tileWidth * CGFloat(Constants.ArenaSize.numColumns) / 2, //- Constants.CellSize.tileWidth/2,
+            x: -Constants.CellSize.tileWidth * CGFloat(Constants.ArenaSize.numColumns) / 2 - Constants.CellSize.tileWidth/2,
             y: -Constants.CellSize.tileHeight * CGFloat(Constants.ArenaSize.numRows) / 2)
         
         
@@ -126,8 +126,8 @@ class GameScene: SKScene {
                 tileNode.alpha = 0.1
                 tileNode.lineWidth = 1
                 var point = pointFor(column: column, row: row)
-                point.x -= Constants.CellSize.tileWidth / 2
-                point.y -= Constants.CellSize.tileHeight / 2
+            //    point.x -= Constants.CellSize.tileWidth / 2
+            //    point.y -= Constants.CellSize.tileHeight / 2
                 tileNode.position = point
                 
                 tilesLayer.addChild(tileNode)
