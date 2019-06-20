@@ -29,7 +29,6 @@ class GameScene: SKScene {
         addChild(gameLayer)
         
         let layerPosition = CGPoint(
-            // MARK: on IPhoneX too close to right edge, substract tileWidth/2
             x: -Constants.CellSize.tileWidth * CGFloat(Constants.ArenaSize.numColumns) / 2 - Constants.CellSize.tileWidth/2,
             y: -Constants.CellSize.tileHeight * CGFloat(Constants.ArenaSize.numRows) / 2)
         
@@ -41,7 +40,6 @@ class GameScene: SKScene {
         gameLayer.addChild(tilesLayer)
         gameLayer.addChild(cropLayer)
         cropLayer.addChild(boxesLayer)
-        //   gameLayer.addChild(boxesLayer)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -81,7 +79,6 @@ class GameScene: SKScene {
          sprite.position = pointFor(column: box.column, row: box.row)
          sprite.zPosition = 1
          box.boxSprite = sprite
-        //   print("sprite.pos1: \(sprite.position.x), \(sprite.position.y)")
         boxesLayer.addChild(sprite)
         
     }
@@ -104,34 +101,26 @@ class GameScene: SKScene {
 //----------------------------------------------------------------------------------
     //MARK: Adding tiles
     func addTiles() {
-        // 1
         for row in 0...Constants.ArenaSize.numRows {
             for column in 0...Constants.ArenaSize.numColumns {
-                //           if level.tileAt(column: column, row: row) != nil {
                 let tileNode = SKSpriteNode(imageNamed: "MaskTile")
                 tileNode.size = CGSize(width: Constants.CellSize.tileWidth, height: Constants.CellSize.tileHeight)
                 tileNode.position = pointFor(column: column, row: row)
                 maskLayer.addChild(tileNode)
-                //           }
             }
         }
         
         for row in 0..<Constants.ArenaSize.numRows - 1 {
             for column in 0..<Constants.ArenaSize.numColumns {
-                //      if level.tileAt(column: column, row: row) != nil {
                 let tileNode = SKShapeNode()
                 tileNode.path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: Constants.CellSize.tileWidth, height: Constants.CellSize.tileHeight)).cgPath
-                //     tileNode.fillColor = .gray
                 tileNode.strokeColor = .white
                 tileNode.alpha = 0.1
                 tileNode.lineWidth = 1
-                var point = pointFor(column: column, row: row)
-            //    point.x -= Constants.CellSize.tileWidth / 2
-            //    point.y -= Constants.CellSize.tileHeight / 2
+                let point = pointFor(column: column, row: row)
                 tileNode.position = point
-                
                 tilesLayer.addChild(tileNode)
-                //       }
+
             }
         }
     }
@@ -140,7 +129,7 @@ class GameScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         findClosestCell()
     }
-    
+    //MARK: Find closest cell after tapping
     func findClosestCell(){
         let box = level.box(atColumn: 0, row: Constants.ArenaSize.numRows - 1)
         let sprite = box!.boxSprite!
@@ -158,8 +147,6 @@ class GameScene: SKScene {
         //move box to closest cell
         let newPosition = pointFor(column: column, row: Constants.ArenaSize.numRows - 1)
         let duration = 0.1
-        // print("sprite.pos: \(sprite!.position.x), \(sprite!.position.y)")
-        // print("newPosition: \(newPosition.x), \(newPosition.y)"
         let moveAction = SKAction.move(to: newPosition, duration: duration)
         
         var longestDuration: TimeInterval = 0
@@ -182,7 +169,6 @@ class GameScene: SKScene {
             let sprite = box.boxSprite
             duration = TimeInterval(((newPosition.y - sprite!.position.y) / Constants.CellSize.tileHeight) * 0.1)
             let moveAction = SKAction.move(to: newPosition, duration: duration)
-            //    moveAction.timingMode = .easeOut
             box.boxSprite!.run(SKAction.group([moveAction]), withKey: "moveUp")
         }
         run(SKAction.wait(forDuration: duration), completion: completion)
@@ -286,7 +272,6 @@ class GameScene: SKScene {
         let delay = 0.1
         let moveAction2 = SKAction.move(to: oldPosition, duration: 2)
         moveAction2.timingMode = .easeOut
-        //    newBox.run(SKAction.repeatForever(SKAction.sequence([moveAction1, moveAction2])), withKey: "swingBox")
         
         newBox.run(SKAction.repeatForever(SKAction.sequence([moveAction1, SKAction.wait(forDuration: delay), moveAction2, SKAction.wait(forDuration: delay)])), withKey: "swingBox")
         
@@ -303,7 +288,6 @@ class GameScene: SKScene {
 //----------------------------------------------------------------------------------
     // MARK: Stop swinging animation
     func stopSwinging(){
-        
     }
 
 
