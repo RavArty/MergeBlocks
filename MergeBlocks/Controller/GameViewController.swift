@@ -40,7 +40,6 @@ class GameViewController: UIViewController {
     
     func beginGame() {
         score = 0
-        //  gameOver()
         numberOfBox = 0
         level.cleanArena()
         scene.removeAllBoxSprites()
@@ -90,15 +89,9 @@ class GameViewController: UIViewController {
             self.view.isUserInteractionEnabled = true
             let chains = level.removeMatches()
             if chains.count == 0 {
-     //           let specialBoxesChain = level.checkSpecialBoxes()
-     //           scene.animateSpecialBoxes(for: specialBoxesChain){
-     //               let columns = self.level.fillHoles()
-     //               self.scene.animateFallingBoxes(in: columns) {
+
                         self.shuffle()
-     //               }
-     //           }
-                
-                
+
                 return
             }
             self.view.isUserInteractionEnabled = false
@@ -110,9 +103,7 @@ class GameViewController: UIViewController {
                 }
                 let columns = self.level.fillHoles()
                 self.scene.animateFallingBoxes(in: columns) {
-                    //    self.view.isUserInteractionEnabled = true
                     self.handleMatches()
-                    //self.handleMatches()
                 }
             }
             
