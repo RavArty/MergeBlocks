@@ -9,7 +9,7 @@
 
 import Foundation
 
-//MARK: Detect all matches
+//MARK: Add shapes to chains (to remove/merge)
 class Matches{
     
     var shape = Shapes()
@@ -24,7 +24,6 @@ class Matches{
             var column = 0
             while column < Constants.ArenaSize.numColumns {
                 if let box = boxes[column, row] {
-                    // let matchType = box.boxType
                     let resultShape = shape.findShape(box, boxes)
                     
                     switch resultShape{
@@ -40,7 +39,6 @@ class Matches{
                             chain.add(box: boxes[column + 1, row]!)
                             chain.add(box: boxes[column, row]!)
                         }
-                        // box.didFall = false
                         set.insert(chain)
                         
                     case Constants.Shapes.ShapeType.threehorizon.rawValue:
@@ -177,14 +175,10 @@ class Matches{
                     default: ()
                         
                     }
-                    //    set = shape.changeType(in: set)
-                    
                 }
                 
                 column += 1
             }
-            
-            
         }
         return set
     }

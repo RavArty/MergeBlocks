@@ -6,6 +6,8 @@
 //  Copyright © 2019 ravkart. All rights reserved.
 //
 
+
+//MARK: Main game element
 import Foundation
 import SpriteKit
 
@@ -33,7 +35,6 @@ enum BoxType: Int {
     
     static func random() -> BoxType {
         return BoxType(rawValue: Int(arc4random_uniform(Constants.ColorAmount.quantity)) + 1)!
-        //   return BoxType(rawValue: Int(arc4random_uniform(4)) + 1)!
     }
 }
 
@@ -48,15 +49,13 @@ class Box: Hashable {    //CustomStringConvertible,
     var isInChain: Bool = false
     var didFall: Bool = false
     var isNeedToDestr: Bool = false
-    //    var checked: Bool
-    //var sprite: SKSpriteNode? - make it active in future
+
     
     init(column: Int, row: Int, boxType: BoxType, isInChain: Bool) {
         self.column = column
         self.row = row
         self.boxType = boxType
         self.isInChain = isInChain
-        //      self.checked = false
     }
     
     func hash(into hasher: inout Hasher) {

@@ -6,13 +6,12 @@
 //  Copyright © 2019 ravkart. All rights reserved.
 //
 
+//MARK: detect shapes
 import Foundation
 
 class Shapes{
     
     private var boxes = Array2D<Box>(columns: Constants.ArenaSize.numColumns, rows: Constants.ArenaSize.numRows)
-    
-    
     
     
     func findShape(_ box: Box, _ boxes: Array2D<Box>) -> String{

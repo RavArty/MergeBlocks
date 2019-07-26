@@ -6,6 +6,8 @@
 //  Copyright © 2019 ravkart. All rights reserved.
 //
 
+//MARK: View file
+
 import SpriteKit
 import GameplayKit
 
@@ -85,8 +87,8 @@ class GameScene: SKScene {
 //----------------------------------------------------------------------------------
     // MARK: add sprites to growing boxes from bottom
     func addSprites(for boxes: Set<Box>) {
+        
         for box in boxes{
-            
             let sprite = SKShapeNode()
             sprite.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: Constants.CellSize.tileWidth, height: Constants.CellSize.tileHeight), cornerRadius: 5).cgPath
             sprite.fillColor = box.boxType.spriteName
@@ -144,7 +146,7 @@ class GameScene: SKScene {
     func animateFallingBox(box: Box, column: Int, row: Int, completion: @escaping () -> Void){
         let sprite = box.boxSprite
         sprite!.removeAction(forKey: "swingBox")
-        //move box to closest cell
+        //move box to the closest cell
         let newPosition = pointFor(column: column, row: Constants.ArenaSize.numRows - 1)
         let duration = 0.1
         let moveAction = SKAction.move(to: newPosition, duration: duration)
@@ -161,7 +163,7 @@ class GameScene: SKScene {
         run(SKAction.wait(forDuration: longestDuration), completion: completion)
     }
 //----------------------------------------------------------------------------------
-    // MARK: Animate moving boxes up
+    // MARK: Animvation, move boxes up
     func animateBoxesUp(boxes: [Box], completion: @escaping () -> Void){
         var duration: TimeInterval = 0
         for box in boxes{
@@ -244,9 +246,7 @@ class GameScene: SKScene {
         for array in columns {
             for (index, box) in array.enumerated() {
                 let newPosition = pointFor(column: box.column, row: box.row)
-                //  let delay = 0.0
                 let delay = 0.1 * TimeInterval(index)
-                //  let delay = 0.05 + 0.15 * TimeInterval(index)
                 let sprite = box.boxSprite!   // sprite always exists at this point
                 let duration = TimeInterval(((sprite.position.y - newPosition.y) / Constants.CellSize.tileHeight) * 0.1)
                 longestDuration = max(longestDuration, duration + delay)

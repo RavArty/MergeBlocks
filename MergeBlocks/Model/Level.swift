@@ -6,11 +6,13 @@
 //  Copyright © 2019 ravkart. All rights reserved.
 //
 
+//MARK: Main Scene
 import Foundation
 import SpriteKit
 
 class Level{
     
+    //track falled box
     private var falledBox = Box(column: Constants.ArenaSize.numColumns - 1, row: Constants.ArenaSize.numRows - 1, boxType: .unknown, isInChain: false)
     private var boxes = Array2D<Box>(columns: Constants.ArenaSize.numColumns, rows: Constants.ArenaSize.numRows)
     
@@ -18,7 +20,7 @@ class Level{
     var changeType = ChangeType()
     
 //----------------------------------------------------------------------------------
-    //MARK: Check availability of box
+    //MARK: Check if box inside the grid
     func box(atColumn column: Int, row: Int) -> Box? {
         precondition(column >= 0 && column < Constants.ArenaSize.numColumns)
         precondition(row >= 0 && row < Constants.ArenaSize.numRows)
@@ -45,7 +47,7 @@ class Level{
             return box
         }
 //----------------------------------------------------------------------------------
-    // MARK: Clean arena
+    // MARK: Clean arena after reaching top row
     func cleanArena(){
         for column in 0...(Constants.ArenaSize.numColumns - 1){
             for row in 0...(Constants.ArenaSize.numRows - 2){
