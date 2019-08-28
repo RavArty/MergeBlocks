@@ -5,7 +5,7 @@
 After releasing two video games on Unity, we decided to develop third game on Swift.
 It will be a simple, meditative game. Main idea is to merge blocks with the same color.
 
-### Prerequisites
+## Prerequisites
 
 * macOS 10.x
 * Xcode 10.0 beta or later
